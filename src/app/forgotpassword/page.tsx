@@ -6,7 +6,7 @@ import { useState } from "react"
 import toast, { Toaster } from "react-hot-toast";
 import Loader from "../components/Loader";
 
-export default function Page() {
+export default function ForgetPasswordPage() {
 
     const [email, setEmail] = useState("");
     const router = useRouter();

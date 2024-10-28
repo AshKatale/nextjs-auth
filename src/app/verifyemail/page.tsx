@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react"
 
 
-export default function Page() {
+export default function VerifyEmailPage() {
 
 const [token, setToken] = useState("");
 const [error , setError]= useState(false);
@@ -31,6 +31,9 @@ useEffect(()=>{
 if(token.length > 0)
 {
     verifyUserEmail();
+}
+else{
+    console.log("Hello World")
 }
 },[token])
 
