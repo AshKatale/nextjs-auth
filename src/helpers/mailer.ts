@@ -25,7 +25,7 @@ export const sendMail = async ({ email, emailType, userId }: any) => {
         }
 
         // Looking to send emails in production? Check out our Email API/SMTP product!
-        var transport = nodemailer.createTransport({
+        const transport = nodemailer.createTransport({
             service: 'gmail',
             port: 2525,
             auth: {

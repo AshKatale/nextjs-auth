@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react"
 
 
-export default function page() {
+export default function Page() {
 
 const [token, setToken] = useState("");
 const [error , setError]= useState(false);

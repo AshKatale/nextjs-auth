@@ -6,7 +6,7 @@ import { useState } from "react"
 import toast, { Toaster } from "react-hot-toast";
 import Loader from "../components/Loader";
 
-export default function page() {
+export default function Page() {
 
     const [email, setEmail] = useState("");
     const router = useRouter();
