@@ -17,9 +17,10 @@ export default function ProfilePage() {
       console.log("Logout Successful");
       toast.success("Logout Successfully");
       router.push("/login");
-    } catch (error: any) {
-      console.log(error.message);
-      toast.error(error.message);
+    } catch (error) {
+      const errorMessage = (error as Error).message;
+      console.log(errorMessage);
+      toast.error(errorMessage);
     }
 
    

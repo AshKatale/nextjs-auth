@@ -27,9 +27,10 @@ export default function SignUpPage() {
       console.log("Login Successful",res.data);
       toast.success("Login Successful")
       router.push("/profile")
-    } catch (error: any) {
-      console.log("Login Failed", error.message)
-      toast.error("Invalid Credentials")
+    } catch (error) {
+      const errorMessage = (error as Error).message;
+      console.log("Login Failed", errorMessage);
+      toast.error("Invalid Credentials");
     }
     finally{
       setLoading(false)

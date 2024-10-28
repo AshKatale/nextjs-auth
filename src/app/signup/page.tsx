@@ -4,7 +4,6 @@ import React, { useEffect } from "react";
 import {useRouter} from "next/navigation";
 import axios from "axios";
 import { toast, Toaster } from "react-hot-toast";
-import NextTopLoader from 'nextjs-toploader';
 import Loader from "../components/Loader";
 
 
@@ -28,8 +27,9 @@ export default function SignupPage() {
             console.log("Signup success", response.data);
             router.push("/login");
             toast.success("Check mail for verification link" , {duration : 5000});
-        } catch (error: any) {
-            console.log("Signup failed", error.message);
+        } catch (error) {
+            const errorMessage = (error as Error).message;
+            console.log("Signup failed", errorMessage);
             toast.error("User already exists");
         } finally {
             setLoading(false);
