@@ -34,7 +34,7 @@ export default function ProfilePage() {
       <div><Toaster/></div>
       <h1 className="text-3xl">Profile</h1>
       <hr/>
-      <h2>{data === "nothing" ? "Nothing": <Link href={`/profile/${data}`}>{data}</Link>}</h2>
+      <h2>{data === "nothing" ? "Nothing": <Link href={`/profile/${data}`}>JWT Token : {data}</Link>}</h2>
       <button
         onClick={getUserDetails}
         className="p-2 mb-3 text-white border border-white rounded-lg mt-4"

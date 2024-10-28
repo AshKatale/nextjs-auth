@@ -26,7 +26,7 @@ export const sendMail = async ({ email, emailType, userId }: any) => {
 
         // Looking to send emails in production? Check out our Email API/SMTP product!
         var transport = nodemailer.createTransport({
-            host: "sandbox.smtp.mailtrap.io",
+            service: 'gmail',
             port: 2525,
             auth: {
                 user: process.env.NODEMAILER_USER,
@@ -35,7 +35,8 @@ export const sendMail = async ({ email, emailType, userId }: any) => {
         });
 
         const mailOptions = {
-            from: 'ashitosh@gmail.com',
+
+            from: process.env.NODEMAILER_USER,
             to: email,
             subject: emailType === 'VERIFY' ? 'Verify your email' : 'Reset Password',
             html: `<p>Click <a href=${process.env.DOMAIN}/${emailType === 'VERIFY' ? 'verifyemail' : 'resetpassword'}?token=${hashedToken}>here</a> to ${emailType === 'VERIFY' ? 'Verify your email' : 'reset your password'}</p>`

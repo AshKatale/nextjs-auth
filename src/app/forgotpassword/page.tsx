@@ -3,16 +3,20 @@
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react"
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
+import Loader from "../components/Loader";
 
 export default function page() {
 
     const [email, setEmail] = useState("");
     const router = useRouter();
+    const [loading, setLoading] = useState(false)
 
     const sendResetPasswordMail = async () => {
       try {
+          setLoading(true)
           const res = await axios.post('/api/users/forgotpassword', { email });
+          setLoading(false)
           console.log(res);
           router.push('/login')
           toast.success("Check mail for Password reset link",{duration : 6000})
@@ -23,7 +27,9 @@ export default function page() {
   };
   
   return (
+    <div className="flex flex-col items-center justify-center min-h-screen py-2"> {loading ? <Loader/> :
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
+      <Toaster/>
         <label htmlFor="email">Enter email to reset password</label>
         <input
     className="p-2 mb-1 text-black rounded-lg"
@@ -35,6 +41,7 @@ export default function page() {
     {/* <p>{email}</p> */}
     <button className="p-2 mb-3 text-white border border-white rounded-lg mt-4" onClick={sendResetPasswordMail}>
         Send Mail
-    </button></div>
+    </button></div>}
+    </div>
   )
 }

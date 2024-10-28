@@ -5,6 +5,7 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import  { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
+import Loader from "../components/Loader";
 
 
 
@@ -46,11 +47,14 @@ export default function SignUpPage() {
   },[user])
 
   return (
+    
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <div><Toaster/></div>
-      <h1>{loading ? "Processing" : "Login"}</h1>
-      <hr></hr>
       
+      {loading ? <Loader/> : 
+      <div className="flex flex-col items-center justify-center min-h-screen py-2">
+      <h1>Login</h1>
+      <hr></hr>
       <label htmlFor="email">Email</label>
       <input
       className="p-2 mb-1 text-black rounded-lg"
@@ -83,6 +87,8 @@ export default function SignUpPage() {
         Forgot Password ?
       </button>
       </Link>
+      </div>
+}
       {/* {user.username}
       {user.email}
       {user.password} */}

@@ -5,6 +5,7 @@ import {useRouter} from "next/navigation";
 import axios from "axios";
 import { toast, Toaster } from "react-hot-toast";
 import NextTopLoader from 'nextjs-toploader';
+import Loader from "../components/Loader";
 
 
 
@@ -47,8 +48,10 @@ export default function SignupPage() {
     return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
         <div><Toaster/></div>
-        <h1>{loading ? "Processing" : "Signup"}</h1>
         <hr />
+        {loading ? <Loader/> :
+        <div className="flex flex-col items-center justify-center min-h-screen py-2">
+            <h1>Sign up</h1>
         <label htmlFor="username">username</label>
         <input 
         className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
@@ -80,6 +83,7 @@ export default function SignupPage() {
             onClick={onSignup}
             className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600">{buttonDisabled ? "No signup" : "Signup"}</button>
             <Link href="/login">Visit login page</Link>
+            </div>}
         </div>
     )
 
