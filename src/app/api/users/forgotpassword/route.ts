@@ -20,8 +20,8 @@ export async function POST(request: NextRequest) {
         console.log("Mail sent to user:", user);
         return NextResponse.json({ message: "User Found", success: true });
 
-    } catch (error: any) {
-        console.error("Error in POST /forgotpassword:", error.message); // Log the error
-        return NextResponse.json({ error: error.message }, { status: 500 });
+    } catch (error) {
+        const errorMessage = (error as Error).message;
+        return NextResponse.json({ error: errorMessage }, { status: 500 });
     }
 }
