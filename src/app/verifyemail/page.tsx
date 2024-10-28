@@ -16,8 +16,9 @@ const verifyUserEmail = async ()=>{
     try {
         await axios.post('/api/users/verifyemail',{token})
         setVerified(true);
-    } catch (error: any) {
-        console.log(error.response.data);
+    } catch (error) {
+        const errorMessage = (error as Error).message;
+        console.log(errorMessage);
         setError(true);
     }
 }
