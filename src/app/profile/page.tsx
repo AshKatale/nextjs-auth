@@ -4,7 +4,7 @@ import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function ProfilePage() {
   const router = useRouter();
@@ -31,6 +31,7 @@ export default function ProfilePage() {
   };
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
+      <div><Toaster/></div>
       <h1 className="text-3xl">Profile</h1>
       <hr/>
       <h2>{data === "nothing" ? "Nothing": <Link href={`/profile/${data}`}>{data}</Link>}</h2>
@@ -46,6 +47,7 @@ export default function ProfilePage() {
       >
         Logout
       </button>
+      
     </div>
   );
 }

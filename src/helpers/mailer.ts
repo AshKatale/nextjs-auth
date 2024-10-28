@@ -36,15 +36,16 @@ export const sendMail = async ({ email, emailType, userId }: any) => {
 
         const mailOptions = {
             from: 'ashitosh@gmail.com',
-            to: 'email',
+            to: email,
             subject: emailType === 'VERIFY' ? 'Verify your email' : 'Reset Password',
-            html: `<p>Click <a href=${process.env.domain}/verifyemail?token=${hashedToken}>here</a> to ${emailType === 'VERIFY' ? 'Verify your email' : 'reset your password'}</p>`
+            html: `<p>Click <a href=${process.env.DOMAIN}/${emailType === 'VERIFY' ? 'verifyemail' : 'resetpassword'}?token=${hashedToken}>here</a> to ${emailType === 'VERIFY' ? 'Verify your email' : 'reset your password'}</p>`
         }
 
        const mailRes = await transport.sendMail(mailOptions);
        return mailRes;
 
     } catch (error: any) {
+        console.error("Error sending mail:", error.message); // Log the error
         throw new Error(error.message);
     }
 } 

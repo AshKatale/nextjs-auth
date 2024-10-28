@@ -4,7 +4,7 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import axios from "axios";
 import  { useRouter } from "next/navigation";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 
 
@@ -28,7 +28,7 @@ export default function SignUpPage() {
       router.push("/profile")
     } catch (error: any) {
       console.log("Login Failed", error.message)
-      toast.error(error.message)
+      toast.error("Invalid Credentials")
     }
     finally{
       setLoading(false)
@@ -47,6 +47,7 @@ export default function SignUpPage() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
+      <div><Toaster/></div>
       <h1>{loading ? "Processing" : "Login"}</h1>
       <hr></hr>
       
@@ -77,6 +78,11 @@ export default function SignUpPage() {
         {buttonDisabled ? "No Login" : "Login"}
       </button>
       <Link className="" href={"/signup"}>Sign Up</Link>
+      <Link href='/forgotpassword'>
+      <button className="p-2 mb-3 text-white border border-white rounded-lg mt-4">
+        Forgot Password ?
+      </button>
+      </Link>
       {/* {user.username}
       {user.email}
       {user.password} */}
