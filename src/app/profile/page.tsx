@@ -9,6 +9,7 @@ import toast, { Toaster } from "react-hot-toast";
 export default function ProfilePage() {
   const router = useRouter();
   const [data, setData] = useState("nothing");
+  const [isVerified , setIsVerified] = useState();
 
   const logout = async () => {
     try {
@@ -28,13 +29,15 @@ export default function ProfilePage() {
     const res = await axios.get("/api/users/me");
     console.log(res);
     setData(res.data.data._id);
+    setIsVerified(res.data.data.isVerified)
   };
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <div><Toaster/></div>
       <h1 className="text-3xl">Profile</h1>
       <hr/>
-      <h2>{data === "nothing" ? "Nothing": <Link href={`/profile/${data}`}>JWT Token : {data}</Link>}</h2>
+      <h2>{data === "nothing" ? "": <Link href={`/profile/${data}`}>JWT Token : {data}</Link>}</h2>
+      <h3>Verified :{isVerified ? "Yes" : "No"}</h3>
       <button
         onClick={getUserDetails}
         className="p-2 mb-3 text-white border border-white rounded-lg mt-4"
