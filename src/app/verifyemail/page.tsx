@@ -25,7 +25,7 @@ const verifyUserEmail = async ()=>{
 useEffect(()=>{
     const urlToken = window.location.search.split("=")[1];
     setToken(urlToken || "");
-},[token])
+}, []);
 
 useEffect(()=>{
 if(token.length > 0)

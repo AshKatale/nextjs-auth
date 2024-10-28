@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-export default function UserProfile({params}:any) {
+export default function UserProfile({params}: { params: { id: string } }) {
 
   const logout = ()=>{
 
