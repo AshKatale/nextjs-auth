@@ -6,10 +6,6 @@ import axios from "axios";
 import { toast, Toaster } from "react-hot-toast";
 import Loader from "../components/Loader";
 
-
-
-
-
 export default function SignupPage() {
     const router = useRouter();
     const [user, setUser] = React.useState({
